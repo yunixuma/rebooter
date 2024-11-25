@@ -1,0 +1,2 @@
+event=button/power LNXPWRBN
+action=/etc/acpi/power-btn.sh "%e" &
