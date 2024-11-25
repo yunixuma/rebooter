@@ -21,4 +21,4 @@ exec_cmd "$SUDO rm /etc/acpi/events/power"
 if [ -e "/etc/acpi/events/power.bak" ]; then
 	mv /etc/acpi/events/power.bak /etc/acpi/events/power
 fi
-exec_cmd "$SUDO /etc/init.d/acpid restart"
+exec_cmd "$SUDO service acpid restart"

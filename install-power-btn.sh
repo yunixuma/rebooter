@@ -16,10 +16,15 @@ else
 	log_echo "\033[35mRun as root.\033[m"
 fi
 
+acpid -v || {
+	install_cmd acpid
+}
+
 if [ -e "/etc/acpi/events/power" ]; then
 	mv /etc/acpi/events/power /etc/acpi/events/power.bak
 fi
 
 exec_cmd "$SUDO cp -pr ./power-btn.sh /etc/acpi/"
 exec_cmd "$SUDO cp -pr ./power /etc/acpi/events/"
-exec_cmd "$SUDO /etc/init.d/acpid restart"
+exec_cmd "$SUDO chkconfig acpid on"
+exec_cmd "$SUDO service acpid restart"
