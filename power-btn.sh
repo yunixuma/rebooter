@@ -15,8 +15,7 @@ if [ -e $PATH_RUN2 ]; then
   log_time
   log_echo "\033[36mPower button pressed three times, event $1\033[m"
   rm -rf $PATH_RUN1 $PATH_RUN2
-  user_logout
-  exec_cmd "systemctl reboot"
+  ./reboot.sh "power button pushed"
 elif [ -e $PATH_RUN1 ]; then
   log_time
   log_echo "\033[33mPower button pressed twice, event $1\033[m"
