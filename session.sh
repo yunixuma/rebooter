@@ -6,14 +6,16 @@
 #    By: ykosaka <ykosaka@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/14 01:04:04 by ykosaka           #+#    #+#              #
-#    Updated: 2025/02/15 17:27:11 by ykosaka          ###   ########.fr        #
+#    Updated: 2025/02/22 20:06:18 by ykosaka          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ## Define functions
 
-log_activity() {
+log_status() {
+	exec_cmd "hostname"
 	exec_cmd "w"
+	exec_cmd "df -h"
 	exec_cmd "free"
 	exec_cmd "ps aux"
 	exec_cmd "systemctl status"
@@ -30,5 +32,6 @@ user_logout() {
 }
 
 pre_reboot() {
+	log_status
 	user_logout
 }

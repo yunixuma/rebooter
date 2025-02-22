@@ -2,7 +2,6 @@
 
 DM=lightdm
 DURATION=10
-PATH_LOG="/var/log/`basename $0 .sh`.log"
 PATH_RUN1="/tmp/pre_rebootme"
 PATH_RUN2="/tmp/rebootme"
 
@@ -22,8 +21,9 @@ elif [ -e $PATH_RUN1 ]; then
   log_time
   log_echo "\033[31mWindow manager will restart\033[m"
   mv $PATH_RUN1 $PATH_RUN2
+  log_Status
   user_logout
-  exec_cmd "service $DM restart"
+  exec_cmd "systemctl restart $DM"
 else
   log_time
   log_echo "\033[36mPower button pressed three times, event $1\033[m"

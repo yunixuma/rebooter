@@ -1,6 +1,9 @@
 #!/bin/bash
 
-PATH_LOG="/var/log/`basename $0 .sh`.log"
+## include other source
+cd `dirname $0`
+. ./common.sh
+. ./session.sh
 
 if [ "$#" -lt 1 ]; then
   reason="undefined"
@@ -14,9 +17,6 @@ else
   oper=$2
 fi
 
-## include other source
-cd `dirname $0`
-. ./common.sh
 pre_reboot
 log_time
 log_echo "\033[36mSystem will $oper ($reason)\033[m"

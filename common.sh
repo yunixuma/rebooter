@@ -6,9 +6,11 @@
 #    By: ykosaka <ykosaka@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/14 01:04:04 by ykosaka           #+#    #+#              #
-#    Updated: 2024/11/25 22:20:10 by ykosaka          ###   ########.fr        #
+#    Updated: 2025/02/22 19:59:53 by ykosaka          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+PATH_LOG="/var/log/`basename $0 .sh`.log"
 
 ## Define functions
 log_echo() {
