@@ -4,7 +4,9 @@
 cd `dirname $0`
 . ./common.sh
 
-PATH_ACPI="/etc/acpi"
+PATH_INSTALL="/usr/local/share"
+NAME_SERVICE="rebooter"
+PATH_EVENT="/etc/acpi/events"
 
 log_time
 
@@ -17,9 +19,9 @@ else
 	log_echo "\033[35mRun as root.\033[m"
 fi
 
-exec_cmd "$SUDO rm $PATH_ACPI/power-btn.sh"
-exec_cmd "$SUDO rm $PATH_ACPI/events/power"
-if [ -e "$PATH_ACPI/events/power.bak" ]; then
-	mv $PATH_ACPI/events/power.bak $PATH_ACPI/events/power
+exec_cmd "$SUDO rm $PATH_INSTALL/$NAME_SERVICE/power-btn.sh"
+exec_cmd "$SUDO rm $PATH_EVENT/power"
+if [ -e "$PATH_EVENT/power.bak" ]; then
+	mv $PATH_EVENT/power.bak $PATH_EVENT/power
 fi
 exec_cmd "$SUDO systemctl restart acpid"

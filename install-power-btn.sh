@@ -4,7 +4,9 @@
 cd `dirname $0`
 . ./common.sh
 
-PATH_ACPI="/etc/acpi"
+PATH_INSTALL="/usr/local/share"
+NAME_SERVICE="rebooter"
+PATH_EVENT="/etc/acpi/events"
 
 log_time
 
@@ -21,11 +23,13 @@ acpid -v || {
 	install_cmd acpid
 }
 
-if [ -e "$PATH_ACPI/events/power" ]; then
-	mv $PATH_ACPI/events/power $PATH_ACPI/events/power.bak
+mkdir -p $PATH_EVENT $PATH_INSTALL/$NAME_SERVICE
+
+if [ -e "$PATH_EVENT/power" ]; then
+	mv $PATH_EVENT/power $PATH_EVENT/power.bak
 fi
 
-exec_cmd "$SUDO cp -pr ./power-btn.sh /etc/acpi/"
-exec_cmd "$SUDO cp -pr ./power /etc/acpi/events/"
+exec_cmd "$SUDO cp -pr ./power-btn.sh $PATH_INSTALL/$NAME_SERVICE"
+exec_cmd "$SUDO cp -pr ./power $PATH_EVENT"
 exec_cmd "$SUDO chkconfig acpid on"
 exec_cmd "$SUDO systemctl restart acpid"
