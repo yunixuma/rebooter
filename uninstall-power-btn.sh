@@ -1,9 +1,10 @@
 #!/bin/bash
-PATH_LOG=./`basename $0 .sh`.log
 
 ## include other source
 cd `dirname $0`
-. ./install-common.sh
+. ./common.sh
+
+PATH_ACPI="/etc/acpi"
 
 log_time
 
@@ -16,9 +17,9 @@ else
 	log_echo "\033[35mRun as root.\033[m"
 fi
 
-exec_cmd "$SUDO rm /etc/acpi/power-btn.sh"
-exec_cmd "$SUDO rm /etc/acpi/events/power"
-if [ -e "/etc/acpi/events/power.bak" ]; then
-	mv /etc/acpi/events/power.bak /etc/acpi/events/power
+exec_cmd "$SUDO rm $PATH_ACPI/power-btn.sh"
+exec_cmd "$SUDO rm $PATH_ACPI/events/power"
+if [ -e "$PATH_ACPI/events/power.bak" ]; then
+	mv $PATH_ACPI/events/power.bak $PATH_ACPI/events/power
 fi
-exec_cmd "$SUDO service acpid restart"
+exec_cmd "$SUDO systemctl restart acpid"
