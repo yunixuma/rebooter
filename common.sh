@@ -6,11 +6,11 @@
 #    By: ykosaka <ykosaka@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/14 01:04:04 by ykosaka           #+#    #+#              #
-#    Updated: 2025/02/24 20:34:04 by ykosaka          ###   ########.fr        #
+#    Updated: 2025/02/24 22:27:02 by ykosaka          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-PATH_LOG+="$NAME_SERVICE"/`basename $0 .sh`.log"
+PATH_LOG+=/$NAME_SERVICE/`basename $0 .sh`.log
 
 ## Define functions
 log_echo() {
