@@ -1,12 +1,8 @@
 #!/bin/bash
 
-DM=lightdm
-DURATION=10
-PATH_RUN1="/tmp/pre_rebootme"
-PATH_RUN2="/tmp/rebootme"
-
 ## include other source
 cd `dirname $0`
+. ./rebooter.env
 . ./common.sh
 . ./session.sh
 

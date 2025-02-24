@@ -2,6 +2,7 @@
 
 ## include other source
 cd `dirname $0`
+. ./rebooter.env
 . ./common.sh
 . ./session.sh
 
