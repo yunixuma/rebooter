@@ -23,8 +23,7 @@ else
   oper=$3
 fi
 
-check_user $user
-pre_reboot
+pre_reboot $reason $user
 log_time
 log_echo "\033[36mSystem will $oper ($reason)\033[m"
 exec_cmd "systemctl $oper"
