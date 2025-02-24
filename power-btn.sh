@@ -8,7 +8,7 @@ cd `dirname $0`
 
 if [ -e $PATH_RUN2 ]; then
   log_time
-  log_echo "\033[36mPower button pressed three times, event $1\033[m"
+  log_echo "\033[31mPower button pressed three times, event $1\033[m"
   rm -rf $PATH_RUN1 $PATH_RUN2
   ./reboot.sh "power button pushed"
 elif [ -e $PATH_RUN1 ]; then
@@ -22,7 +22,7 @@ elif [ -e $PATH_RUN1 ]; then
   exec_cmd "systemctl restart $DM"
 else
   log_time
-  log_echo "\033[36mPower button pressed three times, event $1\033[m"
+  log_echo "\033[36mPower button pressed once, event $1\033[m"
   echo $(date +"%Y-%m-%d %H:%M:%S") > $PATH_RUN1
 fi
 
