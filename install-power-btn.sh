@@ -4,10 +4,8 @@
 cd `dirname $0`
 # . ./session.env
 . ./common.sh
+. ./kevt.env
 
-PATH_INSTALL="/usr/local/share"
-NAME_SERVICE="rebooter"
-PATH_EVENT="/etc/acpi/events"
 NAME_EVENT="power"
 
 log_time
