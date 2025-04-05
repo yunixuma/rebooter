@@ -2,7 +2,7 @@
 
 ## include other source
 cd `dirname $0`
-# . ./rebooter.env
+# . ./session.env
 . ./common.sh
 
 PATH_INSTALL="/usr/local/share"

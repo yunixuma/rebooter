@@ -6,13 +6,13 @@
 #    By: ykosaka <ykosaka@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/14 01:04:04 by ykosaka           #+#    #+#              #
-#    Updated: 2025/04/05 22:33:50 by ykosaka          ###   ########.fr        #
+#    Updated: 2025/04/05 23:12:49 by ykosaka          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ## Define functions
 
-. ./rebooter.env
+. ./session.env
 
 log_status() {
 	exec_cmd "hostname"
