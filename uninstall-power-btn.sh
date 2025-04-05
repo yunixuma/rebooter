@@ -2,8 +2,12 @@
 
 ## include other source
 cd `dirname $0`
-. ./rebooter.env
 . ./common.sh
+
+PATH_INSTALL="/usr/local/share"
+NAME_SERVICE="rebooter"
+PATH_EVENT="/etc/acpi/events"
+NAME_EVENT="power"
 
 log_time
 
@@ -16,9 +20,9 @@ else
 	log_echo "\033[35mRun as root.\033[m"
 fi
 
-exec_cmd "$SUDO rm $PATH_INSTALL/$NAME_SERVICE/power-btn.sh"
-exec_cmd "$SUDO rm $PATH_EVENT/power"
-if [ -e "$PATH_EVENT/power.bak" ]; then
-	mv $PATH_EVENT/power.bak $PATH_EVENT/power
+exec_cmd "${SUDO} rm ${PATH_INSTALL}/${NAME_SERVICE}/${NAME_EVENT}-btn.sh"
+exec_cmd "${SUDO} rm ${PATH_EVENT}/${NAME_EVENT}"
+if [ -e "${PATH_EVENT}/${NAME_EVENT}.bak" ]; then
+	mv ${PATH_EVENT}/${NAME_EVENT}.bak ${PATH_EVENT}/${NAME_EVENT}
 fi
-exec_cmd "$SUDO systemctl restart acpid"
+exec_cmd "${SUDO} systemctl restart acpid"
