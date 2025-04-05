@@ -6,7 +6,7 @@
 #    By: ykosaka <ykosaka@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/14 01:04:04 by ykosaka           #+#    #+#              #
-#    Updated: 2025/03/18 09:48:06 by ykosaka          ###   ########.fr        #
+#    Updated: 2025/04/05 22:33:50 by ykosaka          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ user_lock() {
 	log_time
 	log_echo "\033[33mLocking ${user}'s screen ($1)\033[m"
 	exec_cmd "whoami"
-	exec_cmd "sudo -E -u ${user} i3lock -c 000000"
+	exec_cmd "DISPLAY=:0 sudo -E -u ${user} i3lock -c 000000"
 }
 
 user_logout() {
@@ -44,11 +44,12 @@ user_logout() {
 	log_time
 	log_echo "\033[33m${user} will logout ($1)\033[m"
 	exec_cmd "sudo -E -u ${user} gnome-session-quit --logout --force --no-prompt"
+	exec_cmd "systemctl stop user@`id -u ${user}`"
 }
 
 repair_state() {
-	exec_cmd "modprobe ${NW_DRV}"
-	exec_cmd "systemctl restart ${NW_SVC}"
+	# exec_cmd "modprobe ${NW_DRV}"
+	# exec_cmd "systemctl restart ${NW_SVC}"
 }
 
 reset_dm() {

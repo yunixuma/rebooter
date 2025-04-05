@@ -15,8 +15,9 @@ if [ -e ${PATH_RUN2} ]; then
   log_time
   log_echo "\033[36mCD play button pressed, event $1\033[m"
   rm -rf ${PATH_RUN1} ${PATH_RUN2}
-  log_status
-  repair_state
+  user_lock
+  # log_status
+  # repair_state
 else
   if hostnamectl | grep Hardware | grep Dell; then
     path_brightness=/sys/class/backlight/dell_uart_backlight/brightness
